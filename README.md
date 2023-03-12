@@ -14,6 +14,16 @@ Welcome to the documentation of my project! This documentation will guide you th
   <img src = "https://img.shields.io/badge/redis-red?style=for-the-badge&logo=redis&logoColor=white" />
   <img src = "https://img.shields.io/badge/jsonwebtoken-black?style=for-the-badge&logo=jsonwebtoken&logoColor=white" />
   <img src = "https://img.shields.io/badge/postman-white?style=for-the-badge&logo=postman&logoColor=black" />
-  
-  </div>  
+  </div>
 
+  #controllers/routes
+  <p>The Routes folder is used to handle routing logic and it basically communicate with the database and it handle the request and response</p>
+  <div>
+    <p>There are three controller in total</p>  
+    <ol>
+      <li>authencation route</li>
+      <li>joinevent route</li>
+      <li>schedule eventroute</li>
+    </ol>
+  </div>
+  
