@@ -7,6 +7,13 @@ Welcome to the documentation of my project! This documentation will guide you th
 #Tech-Stack
   
   <div>  
-  <img src = "https://img.shields.io/badge/mongodb-green?style=for-the-badge&logo=mongodb&logoColor=green" />
+  <img src = "https://img.shields.io/badge/mongodb-black?style=for-the-badge&logo=mongodb&logoColor=green" />
+  <img src = "https://img.shields.io/badge/nodejs-black?style=for-the-badge&logo=nodejs&logoColor=green" />
+  <img src = "https://img.shields.io/badge/express-black?style=for-the-badge&logo=expressjs&logoColor=white" />
+  <img src = "https://img.shields.io/badge/mongoose-black?style=for-the-badge&logo=mongoose&logoColor=green" />
+  <img src = "https://img.shields.io/badge/redis-red?style=for-the-badge&logo=redis&logoColor=white" />
+  <img src = "https://img.shields.io/badge/jsonwebtoken-black?style=for-the-badge&logo=jsonwebtoken&logoColor=white" />
+  <img src = "https://img.shields.io/badge/postman-white?style=for-the-badge&logo=postman&logoColor=black" />
+  
   </div>  
 
