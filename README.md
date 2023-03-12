@@ -22,7 +22,7 @@ Welcome to the documentation of my project! This documentation will guide you th
   I will first describe the different components of this assignment or project so that it will be easier for me explain the workings.
   </h2>
   
-#controllers/routes
+  <h2>controllers/routes </h2>
   
   
   
@@ -36,7 +36,7 @@ Welcome to the documentation of my project! This documentation will guide you th
     </ol>
   </div>
   
-#models
+  <h2>models</h2>
   
   <p>The Models directory is used to define the database schema logic</p>
   <div>
@@ -48,7 +48,7 @@ Welcome to the documentation of my project! This documentation will guide you th
     </ol>
   </div>
   
-  #middlewares and validators(validators are also middlewares)
+  <h2>middlewares and validators(validators are also middlewares)</h2>
     <p>It contain token validator,email validator and password validator </p>
   <div>
     <p>There are three middleware ensures that the information which is coming is safe or not invalid</p>
@@ -61,7 +61,10 @@ Welcome to the documentation of my project! This documentation will guide you th
 
   
   <div style:"text-align:"center">
- <h2> Authentication Route <h2> 
+ <h2>Authentication Route </h2>
+                                 <p>app.use("/authentication",Authrouter)</p> ;                                
+                                 
+                                 
   </div>
   
  
