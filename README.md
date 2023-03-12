@@ -5,4 +5,7 @@ Welcome to the documentation of my project! This documentation will guide you th
 <h3>before starting , i would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however i will complete it in the near future.<h3>
 
 #Tech-Stack
-<img src = "https://img.shields.io/badge/Keras-FF0000?style=for-the-badge&logo=keras&logoColor=white" />
+  <div>  
+  <img src = "https://img.shields.io/badge/mongodb-FF0000?style=for-the-badge&logo=mongodb&logoColor=green" />
+  </div>  
+
