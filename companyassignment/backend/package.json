@@ -7,10 +7,12 @@
     "mongoose": "^7.0.1",
     "node-cron": "^3.0.2",
     "pbkdf2": "^3.1.2",
-    "redis": "^4.6.5"
+    "redis": "^4.6.5",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.21"
   },
   "scripts": {
-    "start": "nodemon index.js"
+   
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
