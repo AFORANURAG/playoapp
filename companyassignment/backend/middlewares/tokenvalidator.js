@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 // using redis for logout and blacklisting
 function checkAccessToken(req,res,next){
 let accessToken = req?.headers?.authorization?.split(" ")[1];
-console.log(accessToken);
+// console.log(accessToken);
 if(accessToken){
     client.sIsMember('blacklist', accessToken, (err, result) => {
         if (err) {
@@ -26,7 +26,8 @@ if(accessToken){
                  return  res.status(500).json({message:"server error"})  
             }
             console.log(decoded);
-            req.body.email = decoded.email
+            req.body.email = decoded.email,
+            req.body.id = decoded.id
             next();
             })  
     }

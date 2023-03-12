@@ -10,20 +10,19 @@ const { validateEmail } = require("../validators/emailvalidator");
 const { CheckPassword } = require("../validators/passwordvalidator");
 const redis = require("redis");
 const client = redis.createClient();
-// client.on("error", (err) => {
-//   if (err) {
-//     console.error("Error connecting to Redis:", err);
-//   }
-//   console.log("connected to redis successfully");
-// });
-// client.connect((err) => {
-//   if (err) {
-//     console.error("Error connecting to Redis server:", err);
-//     return;
-//   }
-
-//   console.log("Connected to Redis server");
-// });
+client.on("error", (err) => {
+  if (err) {
+    console.error("Error connecting to Redis:", err);
+  }
+  console.log("connected to redis successfully");
+});
+client.connect((err) => {
+  if (err) {
+    console.error("Error connecting to Redis server:", err);
+    return;
+  }
+  console.log("Connected to Redis server");
+});
 // client.on()
 
 // middle ware for validating that the passwords and emails should be valid
@@ -33,6 +32,10 @@ const client = redis.createClient();
 Authrouter.get("/", (req, res) => {
   res.json({ message: "response from authrouter" });
 });
+
+
+
+
 Authrouter.post("/login", validateEmail, CheckPassword, async (req, res) => {
   const { name, email, password } = req.body;
   // load the user from db , if user is not there that means he does not even have an
@@ -54,7 +57,7 @@ Authrouter.post("/login", validateEmail, CheckPassword, async (req, res) => {
           // in hex format , the length will of 128 (65*2);
           console.log(hash, password);
           if (hash === user.password) {
-            let accessToken = jwt.sign({ email }, process.env.SECRET_KEY, {
+            let accessToken = jwt.sign({id:user._id,email }, process.env.SECRET_KEY, {
               expiresIn: "1d",
             });
             res
@@ -73,7 +76,7 @@ Authrouter.post("/login", validateEmail, CheckPassword, async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "somethings went wrong" });
+    res.status(401).json({ message: "it looks like ,you don't have an account,please register first" });
   }
 });
 
