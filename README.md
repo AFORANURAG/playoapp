@@ -22,8 +22,10 @@ Welcome to the documentation of my project! This documentation will guide you th
   I will first describe the different components of this assignment or project so that it will be easier for me explain the workings.
   </h2>
   
+#controllers/routes
   
-  #controllers/routes
+  
+  
   <p>The Routes folder is used to handle routing logic and it basically communicate with the database and it handle the request and response</p>
   <div>
     <p>There are three controller in total</p>  
@@ -34,7 +36,7 @@ Welcome to the documentation of my project! This documentation will guide you th
     </ol>
   </div>
   
-  #models
+#models
   
   <p>The Models directory is used to define the database schema logic</p>
   <div>
