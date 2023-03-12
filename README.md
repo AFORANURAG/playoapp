@@ -7,6 +7,6 @@ Welcome to the documentation of my project! This documentation will guide you th
 #Tech-Stack
   
   <div>  
-  <img src = "https://img.shields.io/badge/mongodb_new-black?style=for-the-badge&logo=mongodb&logoColor=green" />
+  <img src = "https://img.shields.io/badge/mongodb-green?style=for-the-badge&logo=mongodb&logoColor=green" />
   </div>  
 
