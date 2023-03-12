@@ -23,8 +23,6 @@ emailOfJoinee:{type:String},
 },{ timestamps: true })
 // timestamps for crated at field
 const RequestModel = mongoose.model("request",RequestSchema);
-
-
 // this cron job will check for each minute and will delete all the requests having 
 // dates of past
 // i will check it but lets write accept and reject logic.
