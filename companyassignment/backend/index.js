@@ -17,9 +17,9 @@ app.use("/authentication",Authrouter);
 app.use("/eventschedule",eventRouter);
 app.use("/joinevent",joinEventRouter);
 
-
+// the work of chron job is to remove the request assoicitated 
 async function deleteExpiredRequests() {
-    const date = new Date;
+    
     const now = moment().toISOString();
   
     // Find all events whose timings have already been passed.
@@ -31,8 +31,9 @@ async function deleteExpiredRequests() {
 
 const allExpiredEvents = await Eventmodel.find({ timings: { $lt: now } });
 // Delete all requests associated with expired events.
-for (const event of allExpiredEvents) {
-await RequestModel.deleteMany({ event: event.userid });
+console.log(allExpiredEvents)
+for (const el of allExpiredEvents) {
+await RequestModel.deleteMany({ event: el.userid.toString(),status:"pending"}).populate("event");
 }
 }
   
