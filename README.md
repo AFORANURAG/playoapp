@@ -43,7 +43,7 @@ Welcome to the documentation of my project! This documentation will guide you th
     <p>There are three models</p>
     <ol>
       <li>userModel
-      ![Screenshot from 2023-03-13 05-48-37](https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png)
+      <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
       </li>
       <li>RequestModel</li>
       <li>eventmodel </li>
