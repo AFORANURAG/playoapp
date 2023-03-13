@@ -1,8 +1,8 @@
-# playoassignment
+# playoassignmentdocumentation
 <h2>
 Welcome to the documentation of my project! This documentation will guide you through the different functionalities and features of the backend codebase. The backend is responsible for handling all the server-side operations, such as processing requests, communicating with the database, and serving responses.
 <h2>
-<h3>Before starting , I would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however I will complete it in the near future.For (schedule cleanup of pending requests )i am using cron job but other things are also avaliable such as ttl and setttl indexes , but again because of time consstraint i was not able to explore it fully but  set ttl indexes is a great concept.and i think more effiecint also.<h3>
+<h5>Before starting , I would like to tell you that ,.For (schedule cleanup of pending requests )i am using cron job and you can find the logic in the index.js file  but other things are also avalaible such as ttl and set ttl indexes , but again because of time consstraint i was not able to explore it fully but  set ttl indexes is a great concept.and i think more effiecint also.<h5>
 
 #Tech-Stack
   
@@ -42,17 +42,12 @@ Welcome to the documentation of my project! This documentation will guide you th
   <div>
     <p>There are three models</p>
     <ol>
-      <li>userModel
-      </li>
- <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
-
-      <li>RequestModel(every request by default has pending status(enums))
-      </li>
-      <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
- 
+      <li>userModel </li>
+      <li>RequestModel(every request by default has pending status(enums))</li>
       <li>eventmodel </li>
     </ol>
-
+ <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
+ <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
   <img src="https://user-images.githubusercontent.com/108891203/224585140-71085a9c-96b2-4ff5-afae-75c9088e2c74.jpg">     
   </div>
   
