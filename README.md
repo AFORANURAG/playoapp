@@ -2,7 +2,7 @@
 <h2>
 Welcome to the documentation of my project! This documentation will guide you through the different functionalities and features of the backend codebase. The backend is responsible for handling all the server-side operations, such as processing requests, communicating with the database, and serving responses.
 <h2>
-<h3>Before starting , I would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however I will complete it in the near future.<h3>
+<h3>Before starting , I would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however I will complete it in the near future.For (schedule cleanup of pending requests )i am using cron job but other things are also avaliable such as ttl and setttl indexes , but again because of time consstraint i was not able to explore it fully but  set ttl indexes is a great concept.and i think more effiecint also.<h3>
 
 #Tech-Stack
   
@@ -43,14 +43,17 @@ Welcome to the documentation of my project! This documentation will guide you th
     <p>There are three models</p>
     <ol>
       <li>userModel
+      </li>
  <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
+
+      <li>RequestModel(every request by default has pending status(enums))
       </li>
-      
-      <li>RequestModel
- <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
-      </li>
+      <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
+ 
       <li>eventmodel </li>
     </ol>
+
+  <img src="https://user-images.githubusercontent.com/108891203/224585140-71085a9c-96b2-4ff5-afae-75c9088e2c74.jpg">     
   </div>
   
   <h2>middlewares and validators(validators are also middlewares)</h2>
@@ -83,7 +86,7 @@ Welcome to the documentation of my project! This documentation will guide you th
    
 <li>
 authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
-only register user if he don't have any account.
+only register user if he don't have any account.it does not have any account we hash the password with pbdkf2 with sha512 which yield a 128 character hexadecimal string. and then we feed it to our database in the Usermodel collection.
 </li>
 
 <li>
@@ -92,9 +95,10 @@ in redis set with the help of redis client and SAdd command , so when tries to l
 whether that token is blaklisted or not with sismember command. (just a small functionality to revise redis). 
 </li>
   
+  
+  
 </ol>
-                                 
-
+                                
 </div>
   
   
@@ -113,19 +117,18 @@ whether that token is blaklisted or not with sismember command. (just a small fu
 <ol>
                               
  <li>
- /createevent(POST) -->this is a important route. basically this route is responsible for creating the events. 
-                                              
+ /eventschedule/createevent(POST) -->this is a important route. basically this route is responsible for creating the events.I am using Eventmodel for to interact with the mongodb. we first check whether a same event already exists or not,with the help of userid(eventcreatorid) and timings(). this is just to ensure that the eventorganiser could not make two same event with the same  timings .I am also checking whether the timings are of 
+future or not, the event timings should always be greater than the timing when the date is feeded to db or only future dates are allowed.                                         
 </li>
    
 <li>
-authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
-only register user if he don't have any account.
+/eventschedule/updatestatus(Patch Request)-->this route is basically responsible for updating the requests ,it takes (newstatus,requestid)
+requestid is the defaultid provided by the mongodb(it is not any kind of reference).so with the help of requestid , it will find 
+request and then will update the status of the request.(only one request will either be rejected or accepted at a time)
 </li>
 
 <li>
-authentication/logout -->It implements the concept of caching and blacklisting, basically when a user is is logging out , we just put his jwt
-in redis set with the help of redis client and SAdd command , so when tries to login back with same token , we can stop him , we can check
-whether that token is blaklisted or not with sismember command. (just a small functionality to revise redis). 
+/eventschedule/getrequest(get) -->It will fetch out all the request that have been come up for the eventorganiser, I am creating a reference in request collection and reference basically points to the userid of eventorganisor or eventcreator. so with the help of userid , i am able to fetch out all the requests associated to that event.
 </li>
   
 </ol>
@@ -133,8 +136,52 @@ whether that token is blaklisted or not with sismember command. (just a small fu
 
 </div>  
   
+
+                             
+                             
+                             
+                             
+
+                             
+                             
+                             
+<div style:"text-align:"center">
+ <h2>joinevent Route/Controller </h2>                                
+ <h4>app.use("/joinevent",joinEventRouter);</h4> ;                                
+ <h3>Different routes in joinEventRouter are as follows. It is in the joinevent file in the routes directory</h3>
+ 
+<ol>
+                              
+ <li>
+ /joinevent(get) --This route is simple , it just use to load or get all the events , it first check the token and then loads all the events                                         
+</li>
+   
+<li>
+/joinevent/createrequest(POST)-->This route is for sending the request to an event. It is an important route as it has a lot of important 
+logic. these fields(userid, emailOfJoinee,email,timings) comes from froentend ,where userid is the id of creator and emailofjoinee is the email of joinee, email comes from jwt and timings comes from frontend.(<b>A user can't request to his own event and a user can not request more than once</b>). After all validations and checkings we basically save the request to request collection.
+</li>
+
+ 
+<li>
+/joinevent//allrequest(get) -->Get all the request made by the user with its email(email as joinee).It is a simple route
+</li>
+  
+<li>
+/joinevent//cancelrequest(delete) -->it basically deletes the request made by a user, A really important things is that he can delete only his requests because the emailid which i am using forsearching in request collections is coming from jwt, so it has to be of user only, he can't
+delete others request
+</li>  
   
   
+</ol>
+                                 
+
+</div>  
+  
+  <h1>Thank you for giving your precious time and Have a great day ahead!</h2> 
+  
+                             
+                             
+                            
   
   
   
