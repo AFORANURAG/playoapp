@@ -45,12 +45,13 @@ Welcome to the documentation of my project! This documentation will guide you th
       <li>userModel
  <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
       </li>
-      
+
       <li>RequestModel
  <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
       </li>
       <li>eventmodel </li>
     </ol>
+  <img src="https://user-images.githubusercontent.com/108891203/224584914-f588fa49-c7fe-40fb-9d5b-a5b91d0cdb18.png">     
   </div>
   
   <h2>middlewares and validators(validators are also middlewares)</h2>
@@ -83,7 +84,7 @@ Welcome to the documentation of my project! This documentation will guide you th
    
 <li>
 authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
-only register user if he don't have any account.
+only register user if he don't have any account.it does not have any account we hash the password with pbdkf2 with sha512 which yield a 128 character hexadecimal string. and then we feed it to our database in the Usermodel collection.
 </li>
 
 <li>
@@ -92,9 +93,10 @@ in redis set with the help of redis client and SAdd command , so when tries to l
 whether that token is blaklisted or not with sismember command. (just a small functionality to revise redis). 
 </li>
   
+  
+  
 </ol>
-                                 
-
+                                
 </div>
   
   
@@ -113,8 +115,8 @@ whether that token is blaklisted or not with sismember command. (just a small fu
 <ol>
                               
  <li>
- /createevent(POST) -->this is a important route. basically this route is responsible for creating the events. 
-                                              
+ createevent(POST) -->this is a important route. basically this route is responsible for creating the events.I am using Eventmodel for to interact with the mongodb. we first check whether a same event already exists or not,with the help of userid(eventcreatorid) and timings(). this is just to ensure that the eventorganiser could not make two same event with the same  timings .I am also checking whether the timings are of 
+future or not, the event timings should always be greater than the timing when the date is feeded to db or only future dates are allowed.                                         
 </li>
    
 <li>
@@ -123,9 +125,7 @@ only register user if he don't have any account.
 </li>
 
 <li>
-authentication/logout -->It implements the concept of caching and blacklisting, basically when a user is is logging out , we just put his jwt
-in redis set with the help of redis client and SAdd command , so when tries to login back with same token , we can stop him , we can check
-whether that token is blaklisted or not with sismember command. (just a small functionality to revise redis). 
+/getrequest -->It will fetch out all the request that have been come up for the eventorganiser, i am creating a reference in request collection and reference basically points to the userid of eventorganisor or eventcreator. 
 </li>
   
 </ol>
