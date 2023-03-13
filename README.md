@@ -2,7 +2,7 @@
 <h2>
 Welcome to the documentation of my project! This documentation will guide you through the different functionalities and features of the backend codebase. The backend is responsible for handling all the server-side operations, such as processing requests, communicating with the database, and serving responses.
 <h2>
-<h3>Before starting , I would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however I will complete it in the near future.<h3>
+<h3>Before starting , I would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however I will complete it in the near future.For (schedule cleanup of pending requests )i am using cron job but other things are also avaliable such as ttl and setttl indexes , but again because of time consstraint i was not able to explore it fully but  set ttl indexes is a great concept.and i think more effiecint also.<h3>
 
 #Tech-Stack
   
@@ -46,7 +46,7 @@ Welcome to the documentation of my project! This documentation will guide you th
  <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
       </li>
 
-      <li>RequestModel
+      <li>RequestModel(every request by default has pending status(enums))
  <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
       </li>
       <li>eventmodel </li>
@@ -116,17 +116,52 @@ whether that token is blaklisted or not with sismember command. (just a small fu
 <ol>
                               
  <li>
- createevent(POST) -->this is a important route. basically this route is responsible for creating the events.I am using Eventmodel for to interact with the mongodb. we first check whether a same event already exists or not,with the help of userid(eventcreatorid) and timings(). this is just to ensure that the eventorganiser could not make two same event with the same  timings .I am also checking whether the timings are of 
+ /eventschedule/createevent(POST) -->this is a important route. basically this route is responsible for creating the events.I am using Eventmodel for to interact with the mongodb. we first check whether a same event already exists or not,with the help of userid(eventcreatorid) and timings(). this is just to ensure that the eventorganiser could not make two same event with the same  timings .I am also checking whether the timings are of 
 future or not, the event timings should always be greater than the timing when the date is feeded to db or only future dates are allowed.                                         
 </li>
    
 <li>
-authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
-only register user if he don't have any account.
+/eventschedule/updatestatus(Patch Request)-->this route is basically responsible for updating the requests ,it takes (newstatus,requestid)
+requestid is the defaultid provided by the mongodb(it is not any kind of reference).so with the help of requestid , it will find 
+request and then will update the status of the request.(only one request will either be rejected or accepted at a time)
 </li>
 
 <li>
-/getrequest -->It will fetch out all the request that have been come up for the eventorganiser, i am creating a reference in request collection and reference basically points to the userid of eventorganisor or eventcreator. 
+/eventschedule/getrequest(get) -->It will fetch out all the request that have been come up for the eventorganiser, I am creating a reference in request collection and reference basically points to the userid of eventorganisor or eventcreator. so with the help of userid , i am able to fetch out all the requests associated to that event.
+</li>
+  
+</ol>
+                                 
+
+</div>  
+  
+
+                             
+                             
+                             
+                             
+
+                             
+                             
+                             
+<div style:"text-align:"center">
+ <h2>joinevent Route/Controller </h2>                                
+ <h4>app.use("/joinevent",joinEventRouter);</h4> ;                                
+ <h3>Different routes in joinEventRouter are as follows. It is in the joinevent file in the routes directory</h3>
+ 
+<ol>
+                              
+ <li>
+ /eventschedule(get) --This route is simple , it just use to load or get all the events , it first check the token and then loads all the events                                         
+</li>
+   
+<li>
+/eventschedule/createrequest(POST)-->This route is for sending the request to an event. It is an important route as it has a lot of important 
+logic. these fields(userid, emailOfJoinee,email,timings) comes from froentend ,where userid is the id of creator and emailofjoinee is the email of joinee, email comes from jwt and timings comes from frontend.(<b>A user can't request to his own event and a user can not request more than once</b>)
+</li>
+
+<li>
+/eventschedule/getrequest(get) -->It will fetch out all the request that have been come up for the eventorganiser, I am creating a reference in request collection and reference basically points to the userid of eventorganisor or eventcreator. so with the help of userid , i am able to fetch out all the requests associated to that event.
 </li>
   
 </ol>
@@ -136,6 +171,9 @@ only register user if he don't have any account.
   
   
   
+                             
+                             
+                            
   
   
   
