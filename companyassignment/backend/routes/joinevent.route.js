@@ -30,7 +30,6 @@ console.log(emailOfJoinee,userid)
 const  checkLimit = await Eventmodel.find({userid:userid,timings});
 console.log(checkLimit);
 
-
 let alreadyRequested = await RequestModel.find({emailOfJoinee,event:userid}); 
 // console.log(alreadyRequested)
 if(alreadyRequested.length==0){
@@ -76,10 +75,10 @@ res.status(500).json({message:"error while loading the requests"})
 joinEventRouter.delete("/cancelrequest", async(req,res)=>{
 // so canceling a request is basically just deleting the request from request collection;
 // email or id both will work fine because
-let {userid} =req.body.id;
+let requestId =req.body.requestid;
 
 try {
-let deleteRequest = await RequestModel.findByIdAndDelete({_id:userid})
+let deleteRequest = await RequestModel.findByIdAndDelete({_id:requestId})
 res.status(204).json({message:"deleted successfully"})
 }
 catch (error) {

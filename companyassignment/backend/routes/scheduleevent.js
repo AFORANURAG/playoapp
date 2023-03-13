@@ -8,11 +8,7 @@ eventRouter.get("/",checkAccessToken,(req,res)=>{
     res.json({message:"welcome to the message router"});
 })
 
-
-
-
 // route for creating an event
-
 eventRouter.post("/createevent",checkAccessToken,async (req,res)=>{
 // the timings which are coming should be of future not from past , it is just 
 // a edge case
@@ -41,7 +37,7 @@ console.log(`id of creator is ${id}`);
 // timings will be in iso format
 
 
-const isEventAlreadyPresent =await  Eventmodel.find({timings})
+const isEventAlreadyPresent =await  Eventmodel.find({timings,userid:id})
 console.log(isEventAlreadyPresent);
 if(isEventAlreadyPresent.length==0){
     const date = new Date();
