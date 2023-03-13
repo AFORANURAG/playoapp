@@ -51,7 +51,8 @@ Welcome to the documentation of my project! This documentation will guide you th
       </li>
       <li>eventmodel </li>
     </ol>
-  <img src="https://user-images.githubusercontent.com/108891203/224584914-f588fa49-c7fe-40fb-9d5b-a5b91d0cdb18.png">     
+
+  <img src="https://user-images.githubusercontent.com/108891203/224585140-71085a9c-96b2-4ff5-afae-75c9088e2c74.jpg">     
   </div>
   
   <h2>middlewares and validators(validators are also middlewares)</h2>
