@@ -42,7 +42,9 @@ Welcome to the documentation of my project! This documentation will guide you th
   <div>
     <p>There are three models</p>
     <ol>
-      <li>userModel</li>
+      <li>userModel
+      ![Screenshot from 2023-03-13 05-48-37](https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png)
+      </li>
       <li>RequestModel</li>
       <li>eventmodel </li>
     </ol>
@@ -60,12 +62,17 @@ Welcome to the documentation of my project! This documentation will guide you th
   </div>
 
   
+  
+  
+  
+  
+  
   <div style:"text-align:"center">
  <h2>Authentication Route </h2>                                
  <h4>app.use("/authentication",Authrouter)</h4> ;                                
-                              <h3>Different routes in authenication router are as follows</h3>
+                              <h3>Different routes in authenication router are as follows.It is the routes folder.</h3>
  
-<ul>
+<ol>
                               
  <li>
   authentication/login-->It handles all the login logic, it first checks whether the user have a accout or not , if yes ,then just login otherwise it will just display this message "it looks like ,you don't have an account,please register first".Here we are using email and password validator also just keep or have valid email and password.                     
@@ -73,11 +80,58 @@ Welcome to the documentation of my project! This documentation will guide you th
    
 <li>
 authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
-only register user if does not an account.
+only register user if he don't have any account.
 </li>
 
-</ul>
+<li>
+authentication/logout -->It implements the concept of caching and blacklisting, basically when a user is is logging out , we just put his jwt
+in redis set with the help of redis client and SAdd command , so when tries to login back with same token , we can stop him , we can check
+whether that token is blaklisted or not with sismember command. (just a small functionality to revise redis). 
+</li>
+  
+</ol>
                                  
 
 </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<div style:"text-align:"center">
+ <h2>scheduleevent Route </h2>                                
+ <h4>app.use("/eventschedule",eventRouter)</h4> ;                                
+ <h3>Different routes in eventRouter are as follows. It is in the schedule event file in the routes directory</h3>
+ 
+<ol>
+                              
+ <li>
+ /createevent(POST) -->this is a important route. basically this route is responsible for creating the events. 
+                                              
+</li>
+   
+<li>
+authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
+only register user if he don't have any account.
+</li>
+
+<li>
+authentication/logout -->It implements the concept of caching and blacklisting, basically when a user is is logging out , we just put his jwt
+in redis set with the help of redis client and SAdd command , so when tries to login back with same token , we can stop him , we can check
+whether that token is blaklisted or not with sismember command. (just a small functionality to revise redis). 
+</li>
+  
+</ol>
+                                 
+
+</div>  
+  
+  
+  
+  
+  
   
