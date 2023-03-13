@@ -33,9 +33,6 @@ Authrouter.get("/", (req, res) => {
   res.json({ message: "response from authrouter" });
 });
 
-
-
-
 Authrouter.post("/login", validateEmail, CheckPassword, async (req, res) => {
   const { name, email, password } = req.body;
   // load the user from db , if user is not there that means he does not even have an

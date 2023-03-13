@@ -76,9 +76,9 @@ joinEventRouter.delete("/cancelrequest", async(req,res)=>{
 // so canceling a request is basically just deleting the request from request collection;
 // email or id both will work fine because
 let requestId =req.body.requestid;
-
+let email = req.body.email;
 try {
-let deleteRequest = await RequestModel.findByIdAndDelete({_id:requestId})
+let deleteRequest = await RequestModel.findByIdAndDelete({_id:requestId,emailOfJoinee:email});
 res.status(204).json({message:"deleted successfully"})
 }
 catch (error) {
