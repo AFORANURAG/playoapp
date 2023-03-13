@@ -61,13 +61,25 @@ Welcome to the documentation of my project! This documentation will guide you th
 
   
   <div style:"text-align:"center">
- <h2>Authentication Route </h2>
-                                 <p>app.use("/authentication",Authrouter)</p> ;                                
-                                 
-                                 
-  </div>
-  
+ <h2>Authentication Route </h2>                                
+ <h4>app.use("/authentication",Authrouter)</h4> ;                                
+                              <h3>Different routes in authenication router are as follows</h3>
  
-  
+                              <ul>
+                              
+                              <li>
+  authentication/login-->It handles all the login logic, it first checks whether the user have a accout or not , if yes ,then just login otherwise it will just display this message "it looks like ,you don't have an account,please register first".Here we are using email and password validator also just keep or have valid email and password.
+                              
+                              </li>
+   
+                              <li>
+                              authentication/signup -->As its name suggest it handles the signup process, first we check whther the user is has an accound or not. we will
+only register user if does not an account.
+                              </li>
+                              
+                              
+                              </ul>
+                                 
 
+</div>
   
