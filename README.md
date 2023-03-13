@@ -43,9 +43,12 @@ Welcome to the documentation of my project! This documentation will guide you th
     <p>There are three models</p>
     <ol>
       <li>userModel
-      <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
+ <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
       </li>
-      <li>RequestModel</li>
+      
+      <li>RequestModel
+ <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
+      </li>
       <li>eventmodel </li>
     </ol>
   </div>
