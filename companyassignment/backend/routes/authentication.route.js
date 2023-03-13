@@ -10,19 +10,19 @@ const { validateEmail } = require("../validators/emailvalidator");
 const { CheckPassword } = require("../validators/passwordvalidator");
 const redis = require("redis");
 const client = redis.createClient();
-client.on("error", (err) => {
-  if (err) {
-    console.error("Error connecting to Redis:", err);
-  }
-  console.log("connected to redis successfully");
-});
-client.connect((err) => {
-  if (err) {
-    console.error("Error connecting to Redis server:", err);
-    return;
-  }
-  console.log("Connected to Redis server");
-});
+// client.on("error", (err) => {
+//   if (err) {
+//     console.error("Error connecting to Redis:", err);
+//   }
+//   console.log("connected to redis successfully");
+// });
+// client.connect((err) => {
+//   if (err) {
+//     console.error("Error connecting to Redis server:", err);
+//     return;
+//   }
+//   console.log("Connected to Redis server");
+// });
 // client.on()
 
 // middle ware for validating that the passwords and emails should be valid
