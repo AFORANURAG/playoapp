@@ -2,7 +2,7 @@
 <h2>
 Welcome to the documentation of my project! This documentation will guide you through the different functionalities and features of the backend codebase. The backend is responsible for handling all the server-side operations, such as processing requests, communicating with the database, and serving responses.
 <h2>
-<h5>Before starting , I would like to tell you that , I was very interested in implementing my backend server in a react app but due to time constraint i was not able to so , however I will complete it in the near future.For (schedule cleanup of pending requests )i am using cron job but other things are also avalaible such as ttl and set ttl indexes , but again because of time consstraint i was not able to explore it fully but  set ttl indexes is a great concept.and i think more effiecint also.<h5>
+<h5>Before starting , I would like to tell you that ,.For (schedule cleanup of pending requests )i am using cron job and you can find the logic in the index.js file  but other things are also avalaible such as ttl and set ttl indexes , but again because of time consstraint i was not able to explore it fully but  set ttl indexes is a great concept.and i think more effiecint also.<h5>
 
 #Tech-Stack
   
