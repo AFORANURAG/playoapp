@@ -43,12 +43,13 @@ Welcome to the documentation of my project! This documentation will guide you th
     <p>There are three models</p>
     <ol>
       <li>userModel
- <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
       </li>
+ <img src = "https://user-images.githubusercontent.com/108891203/224583374-4b411c7d-df51-4885-b83b-f65e583bd3ee.png" />  
 
       <li>RequestModel(every request by default has pending status(enums))
- <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
       </li>
+      <img src = "https://user-images.githubusercontent.com/108891203/224583176-9e84a107-cff3-4b46-b3d0-ea819f9d1a82.png" />  
+ 
       <li>eventmodel </li>
     </ol>
 
@@ -152,24 +153,31 @@ request and then will update the status of the request.(only one request will ei
 <ol>
                               
  <li>
- /eventschedule(get) --This route is simple , it just use to load or get all the events , it first check the token and then loads all the events                                         
+ /joinevent(get) --This route is simple , it just use to load or get all the events , it first check the token and then loads all the events                                         
 </li>
    
 <li>
-/eventschedule/createrequest(POST)-->This route is for sending the request to an event. It is an important route as it has a lot of important 
-logic. these fields(userid, emailOfJoinee,email,timings) comes from froentend ,where userid is the id of creator and emailofjoinee is the email of joinee, email comes from jwt and timings comes from frontend.(<b>A user can't request to his own event and a user can not request more than once</b>)
+/joinevent/createrequest(POST)-->This route is for sending the request to an event. It is an important route as it has a lot of important 
+logic. these fields(userid, emailOfJoinee,email,timings) comes from froentend ,where userid is the id of creator and emailofjoinee is the email of joinee, email comes from jwt and timings comes from frontend.(<b>A user can't request to his own event and a user can not request more than once</b>). After all validations and checkings we basically save the request to request collection.
 </li>
 
+ 
 <li>
-/eventschedule/getrequest(get) -->It will fetch out all the request that have been come up for the eventorganiser, I am creating a reference in request collection and reference basically points to the userid of eventorganisor or eventcreator. so with the help of userid , i am able to fetch out all the requests associated to that event.
+/joinevent//allrequest(get) -->Get all the request made by the user with its email(email as joinee).It is a simple route
 </li>
+  
+<li>
+/joinevent//cancelrequest(delete) -->it basically deletes the request made by a user, A really important things is that he can delete only his requests because the emailid which i am using forsearching in request collections is coming from jwt, so it has to be of user only, he can't
+delete others request
+</li>  
+  
   
 </ol>
                                  
 
 </div>  
   
-  
+  <h1>Thank you for giving your precious time and Have a great day ahead!</h2> 
   
                              
                              
